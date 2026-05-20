@@ -4,7 +4,7 @@ $conn = conexao();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +40,9 @@ $result = mysqli_query($conn, $sql_verify);
 if (mysqli_num_rows($result) > 0){
     $user = mysqli_fetch_assoc($result);
     if (password_verify($password, $user['password'])){
-        echo "Você entrou na sua conta, " . $user['name'] . "!";    
+        header("refresh: 1; url=tabela.php");
+        echo "Você entrou na sua conta, " . $user['name'] . "! Redirecionando.";
+        exit;
     }else{
         echo "A senha está errada.";
     }

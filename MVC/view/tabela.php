@@ -1,9 +1,3 @@
-<?php
-require_once('MVC/controller/funcoes.php');
-error_info();
-conexao();
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,8 +8,5 @@ conexao();
 <body>
     <h1>Livraria Humberto de Campos</h1>
     <hr>
-    <div>
-        <a href="MVC/view/login.php"><button>Fazer login</button></a>
-    </div>
 </body>
 </html>
