@@ -10,8 +10,6 @@ mysqli_set_charset($conn, 'utf8');
 
 if(!$conn){
     die("Erro: " . mysqli_connect_error());
-}else{
-    echo 'Conectado! Versão: ' . mysqli_get_client_info();
 }
 return $conn;
 }

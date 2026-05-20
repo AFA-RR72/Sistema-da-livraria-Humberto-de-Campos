@@ -1,6 +1,6 @@
 <?php
 require_once('../controller/funcoes.php');
-conexao();
+$conn = conexao();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ conexao();
         <form action="login.php" method="post">
             <label for="email">Seu email: <input type="text" name="email"></label>
             <br>
-            <label for="password">Sua senha: <input type="password"></label>
+            <label for="password">Sua senha: <input type="password" name="password"></label>
             <br>
             <input type="submit"> 
         </form>
@@ -27,3 +27,25 @@ conexao();
     </div>
 </body>
 </html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+$email = htmlspecialchars($_POST['email'])  ;
+$password = htmlspecialchars($_POST['password']);
+
+$sql_verify = "SELECT * FROM users WHERE email = '$email'";
+
+$result = mysqli_query($conn, $sql_verify);
+
+if (mysqli_num_rows($result) > 0){
+    $user = mysqli_fetch_assoc($result);
+    if (password_verify($password, $user['password'])){
+        echo "Você entrou na sua conta, " . $user['name'] . "!";    
+    }else{
+        echo "A senha está errada.";
+    }
+}else{
+    echo "Usuário não encontrado.";
+}
+}
+?>

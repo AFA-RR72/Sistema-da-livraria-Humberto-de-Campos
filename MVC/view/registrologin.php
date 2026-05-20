@@ -43,17 +43,33 @@ $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $password_confirm = htmlspecialchars($_POST['password_confirm']);
 
+$password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+$sql_verify = "SELECT * FROM users WHERE email = '$email'";
+
+$result = mysqli_query($conn, $sql_verify);
+
+if(empty($name) || empty($email) || empty($password) || empty($password_confirm)){
+    echo "Você precisa preencher todos os campos!";
+}
+elseif(mysqli_num_rows($result) > 0){
+    echo "Este email já está em uso! Usuário não criado.";
+}
+else{
 if($password == $password_confirm && !empty($password)){
-$sql = "INSERT INTO Users (name, email, password) values ('$name', '$email', '$password')";
+$sql = "INSERT INTO Users (name, email, password) values ('$name', '$email', '$password_hash')";
 
 if (mysqli_query($conn, $sql)){
     echo "Usuário criado! Seu ID é: " . mysqli_insert_id($conn);
-}else{
+}
+else{
     echo "Erro, seu usuário não foi criado! Código: " . mysqli_error($conn);
 }
 
-}else{
+}
+else{
     echo "As senhas não são iguais e/ou não foram preenchidas corretamente.";
+}
 }
 }
 ?>
