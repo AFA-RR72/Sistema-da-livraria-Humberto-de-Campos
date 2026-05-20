@@ -1,18 +1,7 @@
 <?php
-function error_info(){
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-}
-
-$conn = mysqli_connect('localhost', 'root', '', 'livraria');
-
-mysqli_set_charset($conn, 'utf8');
-
-if(!$conn){
-    die("Erro: " . mysqli_connect_error());
-}else{
-    echo "Conectado! Versão: " . mysqli_get_client_info();
-}
+require_once('MVC/controller/funcoes.php');
+error_info();
+conexao();
 ?>
 
 <!DOCTYPE html>
@@ -25,5 +14,8 @@ if(!$conn){
 <body>
     <h1>Livraria Humberto de Campos</h1>
     <hr>
+    <div>
+        <a href="MVC/view/login.php"><button>Fazer login</button></a>
+    </div>
 </body>
 </html>
