@@ -59,7 +59,7 @@ elseif(mysqli_num_rows($result) > 0){
 }
 else{
 if($password == $password_confirm && !empty($password)){
-$sql = "INSERT INTO Users (name, email, password) values ('$name', '$email', '$password_hash')";
+$sql = "INSERT INTO users (name, email, password) values ('$name', '$email', '$password_hash')";
 
 if (mysqli_query($conn, $sql)){
     echo "Usuário criado! Seu ID é: " . mysqli_insert_id($conn);
