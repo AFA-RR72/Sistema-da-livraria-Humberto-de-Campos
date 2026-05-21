@@ -14,7 +14,7 @@ if($localhost){
 }else{
     $host = 'sql100.infinityfree.com';
     $user = 'if0_41492011';
-    $password = 'afa011429';
+    $password = 'bancolivraria';
     $database = 'if0_41492011_livraria';
 }
 
