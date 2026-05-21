@@ -8,5 +8,6 @@
 <body>
     <h1>Livraria Humberto de Campos</h1>
     <hr>
+    <a href="../../index.php"><button>Voltar</button></a>
 </body>
 </html>

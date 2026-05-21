@@ -38,7 +38,7 @@ $conn = conexao();
 </html>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' ){  
+if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST' ){  
 
 $name = htmlspecialchars($_POST['name']);
 $email = htmlspecialchars($_POST['email']);
