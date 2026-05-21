@@ -1,7 +1,8 @@
 <?php
-require_once('MVC/controller/funcoes.php');
 error_info();
 conexao();
+require_once('MVC/controller/funcoes.php');
+
 ?>
 
 <!DOCTYPE html>
